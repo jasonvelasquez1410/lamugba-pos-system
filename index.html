@@ -1459,7 +1459,7 @@
         </div>
         <div class="security-chip">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          Strict Receipt & BOM Defense Active
+          Billing Slip & BOM Defense Active
         </div>
         <button class="theme-toggle-btn" onclick="toggleTheme()" title="Switch Light/Dark Mode">
           <svg id="themeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -1570,13 +1570,13 @@
               <strong id="changeDueDisplay">₱0.00</strong>
             </div>
 
-            <!-- Forced Receipt Action -->
+            <!-- Billing Print Action -->
             <button class="btn-checkout-print" id="btnCheckoutAction" onclick="finalizeTransaction()" disabled>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-              PUNCH ORDER & PRINT OFFICIAL RECEIPT
+              PUNCH ORDER & PRINT BILLING SLIP
             </button>
             <div style="text-align: center; font-size: 0.68rem; color: var(--text-muted);">
-              🔒 Anti-Theft Guard: Kitchen Ticket (KOT) fires *only* upon receipt printing.
+              🔒 Anti-Theft Guard: Kitchen Ticket (KOT) fires *only* upon billing print.
             </div>
           </div>
         </div>
@@ -1977,7 +1977,7 @@
             <span class="audit-time">05:42 AM</span>
             <span class="audit-badge" style="background: var(--success-soft); color: #047857;">OR #08491</span>
             <div style="flex:1;">
-              <strong>Receipt Auto-Printed:</strong> 2x Tapsilog, 1x Coke (₱425.00). KOT dispatched to Kitchen Printer #01.
+              <strong>Billing Slip Auto-Printed:</strong> 2x Tapsilog, 1x Coke (₱425.00). KOT dispatched to Kitchen Printer #01.
               <span style="display:block; color: var(--text-muted); font-size: 0.72rem;">Cashier: Maria Santos | Cash: ₱500.00 | Change: ₱75.00</span>
             </div>
           </div>
@@ -2019,27 +2019,27 @@
     <div class="modal-dialog">
       <div class="modal-header">
         <div class="modal-nav-toggles">
-          <button class="toggle-mode-btn active" id="btnModeReceipt" onclick="switchReceiptTab('receipt')">Customer Receipt</button>
+          <button class="toggle-mode-btn active" id="btnModeReceipt" onclick="switchReceiptTab('receipt')">Customer Bill Slip</button>
           <button class="toggle-mode-btn" id="btnModeKot" onclick="switchReceiptTab('kot')">Kitchen Ticket (KOT)</button>
         </div>
         <button class="modal-close-btn" onclick="closeReceiptModal()">&times;</button>
       </div>
 
       <div class="modal-content-area">
-        <!-- Customer Official Thermal Receipt -->
+        <!-- Customer Billing Slip Mockup -->
         <div class="thermal-paper-slip" id="paperReceiptCustomer">
           <div class="text-center">
             <div style="font-weight: 800; font-size: 0.95rem; letter-spacing: 0.04em;">LAMUGBA CDO 24/7</div>
             <div style="font-size: 0.72rem;">TAPSILOGAN ATBP. • LAMI NA, BARATO PA!</div>
             <div style="font-size: 0.68rem; color: #4b5563;">Lifestyle District, Corrales Ext., CDO</div>
-            <div style="font-size: 0.68rem; color: #4b5563;">VAT REG TIN: 482-910-384-000</div>
+            <div style="font-size: 0.74rem; font-weight: 800; margin-top: 4px; color: #111827;">BILLING STATEMENT / GUEST CHECK</div>
             <div style="font-size: 0.68rem; color: #4b5563;">TEL: 0917-123-4567</div>
           </div>
 
           <hr class="paper-divider">
 
           <div style="display:flex; justify-content:space-between; font-size: 0.7rem;">
-            <span>OR #: <strong id="slipOrNumber">OR-2026-08492</strong></span>
+            <span>Bill #: <strong id="slipOrNumber">BILL-2026-08492</strong></span>
             <span id="slipDateTime">Oct 26, 2026 05:48 AM</span>
           </div>
           <div style="display:flex; justify-content:space-between; font-size: 0.7rem;">
@@ -2086,9 +2086,10 @@
           </div>
 
           <div class="official-box">
-            THIS SERVES AS YOUR OFFICIAL RECEIPT<br>
-            NO RECEIPT? REPORT TO 0917-XXX-XXXX<br>
-            YOUR MEAL IS FREE!
+            *** BILLING STATEMENT ONLY ***<br>
+            THIS IS NOT AN OFFICIAL SALES INVOICE / RECEIPT.<br>
+            PLEASE CLAIM YOUR REGISTERED BIR OFFICIAL RECEIPT<br>
+            AT THE CASHIER COUNTER.
           </div>
 
           <div class="text-center" style="font-size: 0.65rem; margin-top: 6px; color: #6b7280;">

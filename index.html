@@ -2047,18 +2047,32 @@
       <!-- Main PO Management Panel -->
       <div class="card-panel" style="margin-bottom: 20px;">
         <div class="card-panel-header">
-          <h3>
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-            Purchase Order (PO) Management & Supplier Directory
-          </h3>
-          <div style="display: flex; gap: 8px;">
+          <div>
+            <h3>
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+              Purchase Order (PO) Management & Supplier Directory
+            </h3>
+            <span style="font-size: 0.73rem; color: var(--text-muted); display: block; margin-top: 2px;">
+              Simplified 1-click supplier orders with automated commissary stock receiving
+            </span>
+          </div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
             <button class="btn-action-light" onclick="quickFillReorderPO()" style="color: var(--primary-dark); font-weight: 800;">
-              ⚡ Auto-Generate Low Stock Reorder
+              ⚡ 1-Click Low Stock Restock
             </button>
-            <button class="btn-checkout-print" style="padding: 7px 14px; font-size: 0.8rem;" onclick="openNewPoModal()">
+            <button class="btn-checkout-print" style="padding: 7px 16px; font-size: 0.82rem;" onclick="openNewPoModal()">
               + Create New Purchase Order
             </button>
           </div>
+        </div>
+
+        <!-- Non-Techie Friendly Quick Supplier Shortcuts -->
+        <div style="padding: 10px 18px; background: var(--bg-subtle); border-bottom: 1px solid var(--border-color); display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 0.78rem;">
+          <strong style="color: var(--text-heading); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.04em;">⚡ Fast Order Presets:</strong>
+          <button class="cat-pill" style="padding: 4px 10px; font-size: 0.74rem;" onclick="quickOrderPreset('beef')">🥩 +50kg Sirloin Beef</button>
+          <button class="cat-pill" style="padding: 4px 10px; font-size: 0.74rem;" onclick="quickOrderPreset('eggs')">🥚 +10 Trays Eggs (300 pcs)</button>
+          <button class="cat-pill" style="padding: 4px 10px; font-size: 0.74rem;" onclick="quickOrderPreset('rice')">🍚 +10 Sacks Dinorado Rice</button>
+          <button class="cat-pill" style="padding: 4px 10px; font-size: 0.74rem;" onclick="quickOrderPreset('coke')">🥤 +5 Cases Coke Cans</button>
         </div>
 
         <!-- PO Registry Table -->
@@ -2379,6 +2393,8 @@
         </div>
       </div>
     </div>
+  </div>
+
   <!-- ==================== MODAL: CREATE NEW PURCHASE ORDER ==================== -->
   <div id="modalNewPoBackdrop" class="modal-backdrop">
     <div class="modal-dialog" style="max-width: 620px;">
@@ -3372,6 +3388,31 @@
       container.innerHTML = "";
       addPoLineItemRow("Farm Fresh Large Eggs (30-pc paper tray)", 10, 255.00); // 300 eggs to cure low stock
       document.getElementById("poNotes").value = "Urgent: Graveyard shift egg stock reached low threshold (83 pcs). Need replenishment for morning rush.";
+      recalculateModalPoTotal();
+    }
+
+    function quickOrderPreset(type) {
+      openNewPoModal();
+      const container = document.getElementById("poLineItemsContainer");
+      container.innerHTML = "";
+
+      if (type === 'beef') {
+        document.getElementById("poSupplierSelect").value = "Cagayan Fresh Meats Wholesale";
+        addPoLineItemRow("Fresh Beef Sirloin (Tapa Cut)", 50, 350.00);
+        document.getElementById("poNotes").value = "50kg Sirloin block for sweet-savory tapa marination batch.";
+      } else if (type === 'eggs') {
+        document.getElementById("poSupplierSelect").value = "Northern Mindanao Egg Farm";
+        addPoLineItemRow("Farm Fresh Large Eggs (30-pc paper tray)", 10, 255.00);
+        document.getElementById("poNotes").value = "Replenishment: 10 trays (300 pcs) large eggs for silog stations.";
+      } else if (type === 'rice') {
+        document.getElementById("poSupplierSelect").value = "Bukidnon Rice Grains Corp";
+        addPoLineItemRow("Premium Dinorado Rice (50kg sack)", 10, 2257.00);
+        document.getElementById("poNotes").value = "10 sacks premium Dinorado for garlic sinangag cooking.";
+      } else if (type === 'coke') {
+        document.getElementById("poSupplierSelect").value = "Coca-Cola Beverages CDO Depot";
+        addPoLineItemRow("Coca-Cola Regular 330ml Can (Case of 24)", 5, 672.00);
+        document.getElementById("poNotes").value = "5 cases (120 cans) cold storage beverage restock.";
+      }
       recalculateModalPoTotal();
     }
 

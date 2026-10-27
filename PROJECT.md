@@ -48,9 +48,12 @@
 * Interactive inputs: Typing physical counts immediately updates discrepancies and displays financial loss in **RED**.
 * Dual digital sign-off banner for outgoing cashier and incoming supervisor.
 
-### Module 4: Purchasing & Commissary Prep Batches
-* Supplier scale receiving weight verification (PO vs digital scale reading).
-* 50kg beef batch marination yield tracker (yielding 492 portions at 98.4% efficiency).
+### Module 4: Purchase Orders (PO) & Commissary Procurement Hub
+* **Purchase Order Lifecycle:** Complete PO issuance, supplier management, and tracking (`Pending Approval` ➔ `In Transit` ➔ `Received (GRN)`).
+* **Official Printable PO Document:** Standardized corporate purchase order with Lamugba CDO letterhead, supplier terms, itemized specs, line totals, and dual manager approval sign-offs.
+* **Auto-Generate Low Stock Reorders:** Intelligent one-click reorder trigger that detects low inventory thresholds (e.g. egg shortages) and pre-populates purchase orders.
+* **Digital Scale Goods Receiving Note (GRN):** Dock receiving with weight match verification (+/- tolerance) and instant inventory replenishment upon receipt.
+* **Batch Marination Yield Tracker:** 50kg beef batch marination yield tracker (yielding 492 portions at 98.4% efficiency) with portion barcode tag dispatching.
 
 ### Module 5: Manager Security Audit Trail
 * Chronological immutable event stream recording printed billing slips, blocked unauthorized voids, mid-shift vault drops, and shift openings.
